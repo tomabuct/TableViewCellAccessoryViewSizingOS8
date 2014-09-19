@@ -37,6 +37,10 @@
                                                                            options:0 metrics:nil views:views]];
 }
 
+- (CGSize)systemLayoutSizeFittingSize:(CGSize)targetSize withHorizontalFittingPriority:(UILayoutPriority)horizontalFittingPriority verticalFittingPriority:(UILayoutPriority)verticalFittingPriority {
+  return [super systemLayoutSizeFittingSize:targetSize withHorizontalFittingPriority:horizontalFittingPriority verticalFittingPriority:verticalFittingPriority];
+}
+
 - (void)layoutSubviews {
   [super layoutSubviews];
 
@@ -46,13 +50,9 @@
 
   [super layoutSubviews];
 
-  for (UIView *view in self.subviews) {
-    if ([view isKindOfClass:[UIButton class]]) {
-      view.layer.borderColor = [UIColor redColor].CGColor;
-      view.layer.borderWidth = 0.5;
-    }
+  if (self.superview) {
+    NSAssert(CGRectGetHeight(self.label.bounds) == self.label.intrinsicContentSize.height, @"bad layout!");
   }
-
 }
 
 - (void)setWidth:(CGFloat)width {

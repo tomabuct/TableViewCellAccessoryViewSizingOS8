@@ -54,7 +54,7 @@ static NSString *const kCell = @"cell";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-  return 100;
+  return 5;
 }
 
 #pragma mark UITableViewDelegate
@@ -65,6 +65,7 @@ static NSString *const kCell = @"cell";
     count++;
     return UITableViewAutomaticDimension;
   } else {
+    count++;
     TableViewCell *const cell = self.sizingCell;
     [self tableView:tableView configureCell:cell atIndexPath:indexPath];
 

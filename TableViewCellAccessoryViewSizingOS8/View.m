@@ -24,6 +24,7 @@
 - (instancetype)initWithFrame:(CGRect)frame {
   if ((self = [super initWithFrame:frame])) {
     _scrollView = [[UIScrollView alloc] init];
+    _scrollView.backgroundColor = [UIColor greenColor];
     [self addSubview:_scrollView];
 
     _anotherView = [[UIView alloc] init];
@@ -32,7 +33,7 @@
     [_scrollView addSubview:_anotherView];
 
     _tableView = [[TableView alloc] init];
-//    _tableView.scrollEnabled = NO;
+    _tableView.scrollsToTop = NO;
     _tableView.layer.borderWidth = 1;
     _tableView.layer.borderColor = [UIColor blueColor].CGColor;
     [_scrollView addSubview:_tableView];
