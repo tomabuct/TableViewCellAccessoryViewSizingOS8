@@ -31,9 +31,9 @@
   NSDictionary *const views = @{ @"label": self.label };
 
   self.label.translatesAutoresizingMaskIntoConstraints = NO;
-  [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[label]|"
+  [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-50-[label]-50-|"
                                                                            options:0 metrics:nil views:views]];
-  [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[label]|"
+  [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-50-[label]-50-|"
                                                                            options:0 metrics:nil views:views]];
 }
 
