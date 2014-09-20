@@ -32,7 +32,7 @@
     [_containerView.tableView registerClass:[TableViewCell class] forCellReuseIdentifier:kCell];
     _containerView.tableView.delegate = _dataSource;
     _containerView.tableView.dataSource = _dataSource;
-//    _containerView.tableView.estimatedRowHeight = 45;
+    _containerView.tableView.estimatedRowHeight = 45;
 
     _dataSource.tableView = _containerView.tableView;
   }
