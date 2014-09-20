@@ -38,6 +38,20 @@
 }
 
 - (CGSize)systemLayoutSizeFittingSize:(CGSize)targetSize withHorizontalFittingPriority:(UILayoutPriority)horizontalFittingPriority verticalFittingPriority:(UILayoutPriority)verticalFittingPriority {
+//  self.width = targetSize.width;
+
+//  NSMutableArray *layoutHostConstraints = [[NSMutableArray alloc] init];
+//  for (NSLayoutConstraint *c in self.contentView.constraints) {
+//    if ([c.identifier hasPrefix:@"UIView-Encapsulated-Layout"]) {
+//      [layoutHostConstraints addObject:c];
+//    }
+//  }
+//  [self.contentView removeConstraints:layoutHostConstraints];
+
+//  [self layoutIfNeeded];
+
+//  [self.contentView addConstraints:layoutHostConstraints];
+
   return [super systemLayoutSizeFittingSize:targetSize withHorizontalFittingPriority:horizontalFittingPriority verticalFittingPriority:verticalFittingPriority];
 }
 

@@ -54,9 +54,9 @@
 
   [super layoutSubviews];
 
-  if (self.superview.superview.superview.superview) {
-    NSAssert(CGRectGetHeight(self.label.bounds) == self.label.intrinsicContentSize.height, @"bad layout!");
-  }
+//  if (self.superview.superview.superview.superview) {
+//    NSAssert(CGRectGetHeight(self.label.bounds) == self.label.intrinsicContentSize.height, @"bad layout!");
+//  }
 }
 
 

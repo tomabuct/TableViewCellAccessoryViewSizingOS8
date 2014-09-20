@@ -8,14 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+#import <YLCollectionUtils/YLUITableViewCell.h>
+
 @class ContentView;
 
-@interface TableViewCell : UITableViewCell
+@interface TableViewCell : YLUITableViewCell
 
 @property (strong, nonatomic) ContentView *theContentView;
 
 @property (assign, nonatomic) CGFloat width;
-
-@property (assign, nonatomic, getter=isSizingCell) BOOL sizingCell;
 
 @end

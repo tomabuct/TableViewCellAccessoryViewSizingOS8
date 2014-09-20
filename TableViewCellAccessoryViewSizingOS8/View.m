@@ -8,7 +8,7 @@
 
 #import "View.h"
 
-#import "TableView.h"
+#import <YLCollectionUtils/YLUITableView.h>
 
 @interface View ()
 
@@ -32,7 +32,7 @@
     _anotherView.layer.borderColor = [UIColor yellowColor].CGColor;
     [_scrollView addSubview:_anotherView];
 
-    _tableView = [[TableView alloc] initWithFrame:CGRectNull style:UITableViewStyleGrouped];
+    _tableView = [[YLUITableView alloc] initWithFrame:CGRectNull style:UITableViewStyleGrouped];
     _tableView.scrollsToTop = NO;
     _tableView.layer.borderWidth = 1;
     _tableView.layer.borderColor = [UIColor blueColor].CGColor;
