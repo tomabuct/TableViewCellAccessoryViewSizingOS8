@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 
+#import "ContentView.h"
 #import "TableViewCell.h"
 #import "View.h"
 
@@ -18,11 +19,11 @@ static NSString *const kCell = @"cell";
 
 @interface ViewController () <UITableViewDataSource, UITableViewDelegate>
 
-@property (strong, nonatomic) UITableView *tableView;
-
 @property (strong, nonatomic) View *containerView;
 
 @property (strong, nonatomic) TableViewCell *sizingCell;
+
+@property (assign, nonatomic) NSUInteger count;
 
 @end
 
@@ -37,6 +38,8 @@ static NSString *const kCell = @"cell";
 
     _sizingCell = [[TableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kCell];
     _sizingCell.sizingCell = YES;
+
+    _count = 2;
   }
   return self;
 }
@@ -54,7 +57,12 @@ static NSString *const kCell = @"cell";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-  return 5;
+  return self.count;
+}
+
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+  return 2;
 }
 
 #pragma mark UITableViewDelegate
@@ -77,8 +85,14 @@ static NSString *const kCell = @"cell";
   }
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+  self.count++;
+  [self.containerView.tableView reloadData];
+}
+
 - (void)tableView:(UITableView *)tableView configureCell:(TableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-  cell.label.text = [@"" stringByPaddingToLength:indexPath.row + 100 withString:@"abcdefghijklmnopqrstuvwxyz" startingAtIndex:0];
+  cell.theContentView.label.text = [@"" stringByPaddingToLength:indexPath.row + 100 withString:@"abcdefghijklmnopqrstuvwxyz" startingAtIndex:0];
+  cell.theContentView.label2.text = [@"" stringByPaddingToLength:indexPath.row + 30 withString:@"abcdefghijklmnopqrstuvwxyz" startingAtIndex:0];
   cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 }
 

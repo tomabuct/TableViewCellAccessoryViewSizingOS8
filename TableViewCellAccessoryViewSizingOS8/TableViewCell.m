@@ -7,6 +7,7 @@
 //
 
 #import "TableViewCell.h"
+#import "ContentView.h"
 
 @interface TableViewCell ()
 
@@ -16,11 +17,10 @@
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
   if ([super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-    _label = [[UILabel alloc] init];
-    _label.layer.borderColor = [UIColor redColor].CGColor;
-    _label.layer.borderWidth = 0.5;
-    _label.numberOfLines = 0;
-    [self.contentView addSubview:_label];
+    _theContentView = [[ContentView alloc] init];
+    _theContentView.layer.borderColor = [UIColor redColor].CGColor;
+    _theContentView.layer.borderWidth = 0.5;
+    [self.contentView addSubview:_theContentView];
 
     [self _installConstraints];
   }
@@ -28,31 +28,17 @@
 }
 
 - (void)_installConstraints {
-  NSDictionary *const views = @{ @"label": self.label };
+  NSDictionary *const views = NSDictionaryOfVariableBindings(_theContentView);
 
-  self.label.translatesAutoresizingMaskIntoConstraints = NO;
-  [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-50-[label]-50-|"
+  self.theContentView.translatesAutoresizingMaskIntoConstraints = NO;
+  [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-5-[_theContentView]-5-|"
                                                                            options:0 metrics:nil views:views]];
-  [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-50-[label]-50-|"
+  [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-5-[_theContentView]-5-|"
                                                                            options:0 metrics:nil views:views]];
 }
 
 - (CGSize)systemLayoutSizeFittingSize:(CGSize)targetSize withHorizontalFittingPriority:(UILayoutPriority)horizontalFittingPriority verticalFittingPriority:(UILayoutPriority)verticalFittingPriority {
   return [super systemLayoutSizeFittingSize:targetSize withHorizontalFittingPriority:horizontalFittingPriority verticalFittingPriority:verticalFittingPriority];
-}
-
-- (void)layoutSubviews {
-  [super layoutSubviews];
-
-  [self.contentView layoutIfNeeded];
-
-  self.label.preferredMaxLayoutWidth = CGRectGetWidth(self.label.bounds);
-
-  [super layoutSubviews];
-
-  if (self.superview) {
-    NSAssert(CGRectGetHeight(self.label.bounds) == self.label.intrinsicContentSize.height, @"bad layout!");
-  }
 }
 
 - (void)setWidth:(CGFloat)width {

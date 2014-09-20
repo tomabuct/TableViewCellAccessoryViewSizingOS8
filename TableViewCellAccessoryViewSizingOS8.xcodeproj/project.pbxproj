@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		F13C0B4919CCBDAD0093CFAD /* View.m in Sources */ = {isa = PBXBuildFile; fileRef = F13C0B4819CCBDAD0093CFAD /* View.m */; };
 		F13C0B4C19CCC1CE0093CFAD /* TableView.m in Sources */ = {isa = PBXBuildFile; fileRef = F13C0B4B19CCC1CE0093CFAD /* TableView.m */; };
+		F1909A6319CD018F0066E932 /* ContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = F1909A6219CD018F0066E932 /* ContentView.m */; };
 		F1A6448D19CB791400EB615D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A6448C19CB791400EB615D /* main.m */; };
 		F1A6449019CB791400EB615D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A6448F19CB791400EB615D /* AppDelegate.m */; };
 		F1A6449319CB791400EB615D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A6449219CB791400EB615D /* ViewController.m */; };
@@ -33,6 +34,8 @@
 		F13C0B4819CCBDAD0093CFAD /* View.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = View.m; sourceTree = "<group>"; };
 		F13C0B4A19CCC1CE0093CFAD /* TableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableView.h; sourceTree = "<group>"; };
 		F13C0B4B19CCC1CE0093CFAD /* TableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableView.m; sourceTree = "<group>"; };
+		F1909A6119CD018F0066E932 /* ContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentView.h; sourceTree = "<group>"; };
+		F1909A6219CD018F0066E932 /* ContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentView.m; sourceTree = "<group>"; };
 		F1A6448719CB791400EB615D /* TableViewCellAccessoryViewSizingOS8.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TableViewCellAccessoryViewSizingOS8.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1A6448B19CB791400EB615D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F1A6448C19CB791400EB615D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -96,11 +99,13 @@
 				F1A644B119CB796C00EB615D /* TableViewCell.m */,
 				F13C0B4719CCBDAD0093CFAD /* View.h */,
 				F13C0B4819CCBDAD0093CFAD /* View.m */,
+				F13C0B4A19CCC1CE0093CFAD /* TableView.h */,
+				F13C0B4B19CCC1CE0093CFAD /* TableView.m */,
+				F1909A6119CD018F0066E932 /* ContentView.h */,
+				F1909A6219CD018F0066E932 /* ContentView.m */,
 				F1A6449719CB791400EB615D /* Images.xcassets */,
 				F1A6449919CB791400EB615D /* LaunchScreen.xib */,
 				F1A6448A19CB791400EB615D /* Supporting Files */,
-				F13C0B4A19CCC1CE0093CFAD /* TableView.h */,
-				F13C0B4B19CCC1CE0093CFAD /* TableView.m */,
 			);
 			path = TableViewCellAccessoryViewSizingOS8;
 			sourceTree = "<group>";
@@ -230,6 +235,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1909A6319CD018F0066E932 /* ContentView.m in Sources */,
 				F13C0B4919CCBDAD0093CFAD /* View.m in Sources */,
 				F1A6449319CB791400EB615D /* ViewController.m in Sources */,
 				F1A644B219CB796C00EB615D /* TableViewCell.m in Sources */,

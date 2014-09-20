@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@class ContentView;
+
 @interface TableViewCell : UITableViewCell
 
-@property (strong, nonatomic) UILabel *label;
+@property (strong, nonatomic) ContentView *theContentView;
 
 @property (assign, nonatomic) CGFloat width;
 
