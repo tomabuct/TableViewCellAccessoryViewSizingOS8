@@ -22,18 +22,30 @@
     _label.numberOfLines = 0;
     [self.contentView addSubview:_label];
 
+    _label2 = [[UILabel alloc] init];
+    _label2.layer.borderColor = [UIColor redColor].CGColor;
+    _label2.layer.borderWidth = 0.5;
+    _label2.numberOfLines = 0;
+    [self.contentView addSubview:_label2];
+
     [self _installConstraints];
   }
   return self;
 }
 
 - (void)_installConstraints {
-  NSDictionary *const views = @{ @"label": self.label };
+  NSDictionary *const views = @{ @"label": self.label, @"label2": self.label2 };
 
   self.label.translatesAutoresizingMaskIntoConstraints = NO;
   [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-50-[label]-50-|"
                                                                            options:0 metrics:nil views:views]];
-  [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-50-[label]-50-|"
+  [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-50-[label]"
+                                                                           options:0 metrics:nil views:views]];
+
+  self.label2.translatesAutoresizingMaskIntoConstraints = NO;
+  [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-50-[label2]-50-|"
+                                                                           options:0 metrics:nil views:views]];
+  [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[label]-[label2]-50-|"
                                                                            options:0 metrics:nil views:views]];
 }
 
@@ -47,6 +59,7 @@
   [self.contentView layoutIfNeeded];
 
   self.label.preferredMaxLayoutWidth = CGRectGetWidth(self.label.bounds);
+  self.label2.preferredMaxLayoutWidth = CGRectGetWidth(self.label2.bounds);
 
   [super layoutSubviews];
 

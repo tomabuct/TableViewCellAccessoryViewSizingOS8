@@ -11,6 +11,7 @@
 @interface TableViewCell : UITableViewCell
 
 @property (strong, nonatomic) UILabel *label;
+@property (strong, nonatomic) UILabel *label2;
 
 @property (assign, nonatomic) CGFloat width;
 

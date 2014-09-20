@@ -32,7 +32,7 @@
     _anotherView.layer.borderColor = [UIColor yellowColor].CGColor;
     [_scrollView addSubview:_anotherView];
 
-    _tableView = [[TableView alloc] init];
+    _tableView = [[TableView alloc] initWithFrame:CGRectNull style:UITableViewStyleGrouped];
     _tableView.scrollsToTop = NO;
     _tableView.layer.borderWidth = 1;
     _tableView.layer.borderColor = [UIColor blueColor].CGColor;
