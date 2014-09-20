@@ -34,6 +34,7 @@ static NSString *const kCell = @"cell";
     [_containerView.tableView registerClass:[TableViewCell class] forCellReuseIdentifier:kCell];
     _containerView.tableView.delegate = self;
     _containerView.tableView.dataSource = self;
+    _containerView.tableView.estimatedRowHeight = 50;
 
     _sizingCell = [[TableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kCell];
     _sizingCell.sizingCell = YES;
@@ -58,6 +59,10 @@ static NSString *const kCell = @"cell";
 }
 
 #pragma mark UITableViewDelegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+  [self.navigationController pushViewController:[[ViewController alloc] init] animated:YES];
+}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
   static NSUInteger count = 0;
