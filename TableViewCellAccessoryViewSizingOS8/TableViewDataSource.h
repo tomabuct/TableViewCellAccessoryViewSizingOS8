@@ -11,6 +11,7 @@
 @class ViewController;
 
 extern NSString *const kCell;
+extern NSString *const kHeaderFooterView;
 
 @interface TableViewDataSource : YLUITableViewDataSource
 

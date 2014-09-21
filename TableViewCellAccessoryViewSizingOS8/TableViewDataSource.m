@@ -11,9 +11,12 @@
 #import "ContentView.h"
 #import "TableViewCell.h"
 #import "TableViewDataSource.h"
+#import "YLUITableViewDataSourceSubclass.h"
 #import "ViewController.h"
+#import  <YLCollectionUtils/YLUITableViewSectionHeaderFooterView.h>
 
 NSString *const kCell = @"cell";
+NSString *const kHeaderFooterView = @"headerFooterView";
 
 @interface TableViewDataSource ()
 
@@ -25,7 +28,7 @@ NSString *const kCell = @"cell";
 
 - (instancetype)init {
   if (self = [super init]) {
-    self.count = 4;
+    self.count = 10;
   }
   return self;
 }
@@ -34,26 +37,47 @@ NSString *const kCell = @"cell";
   return kCell;
 }
 
+- (NSString *)tableView:(UITableView *)tableView reuseIdentifierForHeaderInSection:(NSUInteger)section {
+  return kHeaderFooterView;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
   return self.count;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-  return 2;
+  return 1;
 }
 
 - (void)tableView:(UITableView *)tableView configureCell:(TableViewCell *)cell forIndexPath:(NSIndexPath *)indexPath {
-  cell.theContentView.label.text = [@"" stringByPaddingToLength:indexPath.row + 100 withString:@"abcdefghijklmnopqrstuvwxyz" startingAtIndex:0];
-  cell.theContentView.label2.text = [@"" stringByPaddingToLength:indexPath.row + 30 withString:@"abcdefghijklmnopqrstuvwxyz" startingAtIndex:0];
+  cell.theContentView.label.text = [@"" stringByPaddingToLength:indexPath.row + 70 withString:@"abcdefghijklmnopqrstuvwxyz" startingAtIndex:0];
+  cell.theContentView.label2.text = [@"" stringByPaddingToLength:indexPath.row + 40 withString:@"abcdefghijklmnopqrstuvwxyz" startingAtIndex:0];
   cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+
+  [super tableView:tableView configureCell:cell forIndexPath:indexPath];
+}
+
+- (void)tableView:(UITableView *)tableView configureHeader:(YLUITableViewSectionHeaderFooterView *)headerView forSection:(NSUInteger)section {
+  [super tableView:tableView configureHeader:headerView forSection:section];
+  headerView.text = @"hiiii";
 }
 
 #pragma mark UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
   self.count++;
-  [self.tableView reloadData];
-  [self.viewController didSelectRow];
+
+  if (self.count % 2 == 0) {
+    [self.viewController didSelectRow];
+    [self.tableView reloadData];
+  } else {
+    [self.tableView beginUpdates];
+    for (NSUInteger i = 0; i < [self numberOfSectionsInTableView:tableView]; i++) {
+      [self.tableView insertRowsAtIndexPaths:@[ [NSIndexPath indexPathForItem:self.count - 1 inSection:i] ]
+                            withRowAnimation:UITableViewRowAnimationLeft];
+    }
+    [self.tableView endUpdates];
+  }
 }
 
 

@@ -16,6 +16,4 @@
 
 @property (strong, nonatomic) ContentView *theContentView;
 
-@property (assign, nonatomic) CGFloat width;
-
 @end

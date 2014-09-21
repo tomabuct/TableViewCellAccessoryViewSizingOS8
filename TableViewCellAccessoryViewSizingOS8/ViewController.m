@@ -12,6 +12,7 @@
 #import "TableViewCell.h"
 #import "TableViewDataSource.h"
 #import "View.h"
+#import <YLCollectionUtils/YLUITableViewSectionHeaderFooterView.h>
 
 @interface ViewController ()
 
@@ -30,9 +31,11 @@
 
     _containerView = [[View alloc] init];
     [_containerView.tableView registerClass:[TableViewCell class] forCellReuseIdentifier:kCell];
+    [_containerView.tableView registerClass:[YLUITableViewSectionHeaderFooterView class] forHeaderFooterViewReuseIdentifier:kHeaderFooterView];
     _containerView.tableView.delegate = _dataSource;
     _containerView.tableView.dataSource = _dataSource;
     _containerView.tableView.estimatedRowHeight = 45;
+    _containerView.tableView.estimatedSectionHeaderHeight = 50;
 
     _dataSource.tableView = _containerView.tableView;
   }

@@ -37,32 +37,13 @@
                                                                            options:0 metrics:nil views:views]];
 }
 
+- (void)updateConstraints {
+  [super updateConstraints];
+//  [super updateConstraints];
+}
+
 - (CGSize)systemLayoutSizeFittingSize:(CGSize)targetSize withHorizontalFittingPriority:(UILayoutPriority)horizontalFittingPriority verticalFittingPriority:(UILayoutPriority)verticalFittingPriority {
-//  self.width = targetSize.width;
-
-//  NSMutableArray *layoutHostConstraints = [[NSMutableArray alloc] init];
-//  for (NSLayoutConstraint *c in self.contentView.constraints) {
-//    if ([c.identifier hasPrefix:@"UIView-Encapsulated-Layout"]) {
-//      [layoutHostConstraints addObject:c];
-//    }
-//  }
-//  [self.contentView removeConstraints:layoutHostConstraints];
-
-//  [self layoutIfNeeded];
-
-//  [self.contentView addConstraints:layoutHostConstraints];
-
   return [super systemLayoutSizeFittingSize:targetSize withHorizontalFittingPriority:horizontalFittingPriority verticalFittingPriority:verticalFittingPriority];
-}
-
-- (void)setWidth:(CGFloat)width {
-  CGRect bounds = self.bounds;
-  bounds.size.width = width;
-  self.bounds = bounds;
-}
-
-- (CGFloat)width {
-  return CGRectGetWidth(self.bounds);
 }
 
 @end
