@@ -9,20 +9,21 @@
 #import "ViewController.h"
 
 #import "TableViewCell.h"
+#import "SectionHeaderFooterView.h"
 #import "View.h"
 
 NSString *const kOS7VersionString = @"7.0";
 NSString *const kOS8VersionString = @"8.0";
 
 static NSString *const kCell = @"cell";
+static NSString *const kSectionHeaderFooterView = @"sectionHeaderFooterView";
 
 @interface ViewController () <UITableViewDataSource, UITableViewDelegate>
-
-@property (strong, nonatomic) UITableView *tableView;
 
 @property (strong, nonatomic) View *containerView;
 
 @property (strong, nonatomic) TableViewCell *sizingCell;
+@property (strong, nonatomic) SectionHeaderFooterView *sizingHeaderFooterView;
 
 @property (assign, nonatomic) NSUInteger count;
 
@@ -34,12 +35,16 @@ static NSString *const kCell = @"cell";
   if (self = [super init]) {
     _containerView = [[View alloc] init];
     [_containerView.tableView registerClass:[TableViewCell class] forCellReuseIdentifier:kCell];
+    [_containerView.tableView registerClass:[SectionHeaderFooterView class] forHeaderFooterViewReuseIdentifier:kSectionHeaderFooterView];
     _containerView.tableView.delegate = self;
     _containerView.tableView.dataSource = self;
     _containerView.tableView.estimatedRowHeight = 30;
+    _containerView.tableView.estimatedSectionHeaderHeight = 60;
 
     _sizingCell = [[TableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kCell];
     _sizingCell.sizingCell = YES;
+
+    _sizingHeaderFooterView = [[SectionHeaderFooterView alloc] initWithReuseIdentifier:kSectionHeaderFooterView];
 
     _count = 5;
   }
@@ -51,6 +56,12 @@ static NSString *const kCell = @"cell";
 }
 
 #pragma mark UITableViewDataSource
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+  SectionHeaderFooterView *const sectionHeaderFooterView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:kSectionHeaderFooterView];
+  [self tableView:tableView configureHeader:sectionHeaderFooterView inSection:section];
+  return sectionHeaderFooterView;
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
   TableViewCell *const cell = [tableView dequeueReusableCellWithIdentifier:kCell forIndexPath:indexPath];
@@ -70,8 +81,35 @@ static NSString *const kCell = @"cell";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
   self.count++;
-  [self.tableView reloadData];
-  [self.navigationController pushViewController:[[ViewController alloc] init] animated:YES];
+
+  [tableView beginUpdates];
+  for (NSUInteger section = 0; section < [self numberOfSectionsInTableView:tableView]; section++) {
+    [tableView insertRowsAtIndexPaths:@[ [NSIndexPath indexPathForRow:1 inSection:section] ]
+                     withRowAnimation:UITableViewRowAnimationAutomatic];
+  }
+  [tableView endUpdates];
+
+  if (self.count % 2 == 0) {
+    [self.navigationController pushViewController:[[ViewController alloc] init] animated:YES];
+  }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+  static NSUInteger count = 0;
+  if ([self isOS8OrLater]) {
+    count++;
+    return UITableViewAutomaticDimension;
+  } else {
+    count++;
+    SectionHeaderFooterView *const header = self.sizingHeaderFooterView;
+    [self tableView:tableView configureHeader:header inSection:section];
+
+    header.width = CGRectGetWidth(tableView.bounds);
+    [header layoutIfNeeded];
+
+    CGSize sz = [header.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+    return sz.height;
+  }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -96,6 +134,10 @@ static NSString *const kCell = @"cell";
   cell.label.text = [@"" stringByPaddingToLength:indexPath.row + 100 withString:@"abcdefghijklmnopqrstuvwxyz" startingAtIndex:0];
   cell.label2.text = [@"" stringByPaddingToLength:indexPath.row + 40 withString:@"abcdefghijklmnopqrstuvwxyz" startingAtIndex:0];
   cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+}
+
+- (void)tableView:(UITableView *)tableView configureHeader:(SectionHeaderFooterView *)header inSection:(NSInteger)section {
+  header.label.text = [@"" stringByPaddingToLength:section + 100 withString:@"abcdefghijklmnopqrstuvwxyz" startingAtIndex:0];
 }
 
 #pragma mark Utils

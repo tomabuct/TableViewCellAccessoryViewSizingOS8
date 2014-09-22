@@ -17,12 +17,14 @@
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
   if ([super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
     _label = [[UILabel alloc] init];
+    _label.font = [UIFont systemFontOfSize:10];
     _label.layer.borderColor = [UIColor redColor].CGColor;
     _label.layer.borderWidth = 0.5;
     _label.numberOfLines = 0;
     [self.contentView addSubview:_label];
 
     _label2 = [[UILabel alloc] init];
+    _label2.font = [UIFont systemFontOfSize:9];
     _label2.layer.borderColor = [UIColor redColor].CGColor;
     _label2.layer.borderWidth = 0.5;
     _label2.numberOfLines = 0;

@@ -16,6 +16,7 @@
 		F1A6449B19CB791400EB615D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1A6449919CB791400EB615D /* LaunchScreen.xib */; };
 		F1A644A719CB791400EB615D /* TableViewCellAccessoryViewSizingOS8Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A644A619CB791400EB615D /* TableViewCellAccessoryViewSizingOS8Tests.m */; };
 		F1A644B219CB796C00EB615D /* TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A644B119CB796C00EB615D /* TableViewCell.m */; };
+		F1F0A7BF19CFF13A00F2A350 /* SectionHeaderFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F0A7BE19CFF13A00F2A350 /* SectionHeaderFooterView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,8 @@
 		F1A644A619CB791400EB615D /* TableViewCellAccessoryViewSizingOS8Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TableViewCellAccessoryViewSizingOS8Tests.m; sourceTree = "<group>"; };
 		F1A644B019CB796C00EB615D /* TableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewCell.h; sourceTree = "<group>"; };
 		F1A644B119CB796C00EB615D /* TableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewCell.m; sourceTree = "<group>"; };
+		F1F0A7BD19CFF13A00F2A350 /* SectionHeaderFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SectionHeaderFooterView.h; sourceTree = "<group>"; };
+		F1F0A7BE19CFF13A00F2A350 /* SectionHeaderFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SectionHeaderFooterView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +104,8 @@
 				F1A6448A19CB791400EB615D /* Supporting Files */,
 				F13C0B4A19CCC1CE0093CFAD /* TableView.h */,
 				F13C0B4B19CCC1CE0093CFAD /* TableView.m */,
+				F1F0A7BD19CFF13A00F2A350 /* SectionHeaderFooterView.h */,
+				F1F0A7BE19CFF13A00F2A350 /* SectionHeaderFooterView.m */,
 			);
 			path = TableViewCellAccessoryViewSizingOS8;
 			sourceTree = "<group>";
@@ -233,6 +238,7 @@
 				F13C0B4919CCBDAD0093CFAD /* View.m in Sources */,
 				F1A6449319CB791400EB615D /* ViewController.m in Sources */,
 				F1A644B219CB796C00EB615D /* TableViewCell.m in Sources */,
+				F1F0A7BF19CFF13A00F2A350 /* SectionHeaderFooterView.m in Sources */,
 				F13C0B4C19CCC1CE0093CFAD /* TableView.m in Sources */,
 				F1A6449019CB791400EB615D /* AppDelegate.m in Sources */,
 				F1A6448D19CB791400EB615D /* main.m in Sources */,
