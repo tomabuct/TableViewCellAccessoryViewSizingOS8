@@ -17,6 +17,7 @@
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
   if ([super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
     _label = [[UILabel alloc] init];
+    _label.font = [UIFont systemFontOfSize:10];
     _label.layer.borderColor = [UIColor redColor].CGColor;
     _label.layer.borderWidth = 0.5;
     _label.numberOfLines = 0;
